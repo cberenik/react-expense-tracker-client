@@ -20,9 +20,10 @@ class InMemoryExpenseService {
 
     removeExpense = expenseId => {
         this.expenses = [...this.expenses.slice(0, expenseId), ...this.expenses.slice(expenseId + 1)];
+        return new Promise((resolve, reject) => resolve());
     }
 
-    getAll = () => this.expenses.slice();
+    getAll = () => new Promise((resolve, reject) => resolve(this.expenses.slice()));
 }
 
 export const inMemoryExpenseService = new InMemoryExpenseService();

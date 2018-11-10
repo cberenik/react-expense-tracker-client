@@ -5,12 +5,8 @@ export function PageShell(props) {
     return (
         <div>
             <Menu fixed="top" inverted>
-                <Menu.Item as="a" header>
-                    <Image
-                        size="mini"
-                        src="/dollar-sign.png"
-                        style={{ marginRight: '1.5em' }}
-                    />
+                <Menu.Item header>
+                    <Image size="mini" src="../dollar-sign.png" style={{ marginRight: '1.5em' }} />
                     Expense Tracker
                 </Menu.Item>
             </Menu>
