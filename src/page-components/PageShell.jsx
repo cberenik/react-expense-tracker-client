@@ -12,7 +12,7 @@ export function PageShell(props) {
                 </Menu.Item>
             </Menu>
 
-            <Container style={{ marginTop: '7em' }}>{props.content}</Container>
+            <Container style={{ marginTop: '7em' }}>{props.children}</Container>
         </div>
     );
 }

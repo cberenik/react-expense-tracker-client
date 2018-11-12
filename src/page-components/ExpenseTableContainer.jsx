@@ -1,7 +1,10 @@
 import React from 'react';
-import { ExpenseTable } from './ExpenseTable.jsx';
+import moment from 'moment';
 
-export class ExpenseListContainer extends React.Component {
+import { ExpenseTable } from './ExpenseTable.jsx';
+import { AddExpenseForm } from './AddExpenseForm.jsx';
+
+export class ExpenseTableContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +35,24 @@ export class ExpenseListContainer extends React.Component {
             .catch(() => this.props.notificationService.error('Failed to delete expense'));
     };
 
+    handleAddExpense = (description, amount, purchaseDate) => {
+        this.props.expenseService
+            .addExpense(description, amount, moment(purchaseDate))
+            .then(newExpense => {
+                this.setState({
+                    expenses: [...this.state.expenses.slice(), newExpense],
+                });
+                this.props.notificationService.success('Added expense');
+            })
+            .catch(err => this.props.notificationService.error('Failed to add expense'));
+    };
+
     render() {
-        return <ExpenseTable expenses={this.state.expenses} handleDeleteExpense={this.handleDeleteExpense} />;
+        return (
+            <React.Fragment>
+                <ExpenseTable expenses={this.state.expenses} handleDeleteExpense={this.handleDeleteExpense} />
+                <AddExpenseForm handleSubmit={this.handleAddExpense} />
+            </React.Fragment>
+        );
     }
 }
