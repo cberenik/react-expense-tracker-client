@@ -14,18 +14,19 @@ class InMemoryExpenseService {
      * @param {moment.Moment} purchaseDate - the date of the expense incursion
      */
     addExpense = (description, amount, purchaseDate) => {
-        const nextId = this.expenses.reduce((a, b) => a > b ? a : b, 0);
+        const highest = this.expenses.reduce((a, b) => a.id > b.id ? a : b, 0);
+        const nextId = highest.id + 1;
         const newExpense = new Expense(nextId, description, amount, purchaseDate);
         this.expenses = [...this.expenses.slice(), newExpense];
-        return new Promise((resolve, reject) => resolve(newExpense));
+        return Promise.resolve(newExpense);
     }
 
     removeExpense = expenseId => {
         this.expenses = [...this.expenses.slice(0, expenseId), ...this.expenses.slice(expenseId + 1)];
-        return new Promise((resolve, reject) => resolve());
+        return Promise.resolve();
     }
 
-    getAll = () => new Promise((resolve, reject) => resolve(this.expenses.slice()));
+    getAll = () => Promise.resolve(this.expenses.slice());
 }
 
 export const inMemoryExpenseService = new InMemoryExpenseService();
