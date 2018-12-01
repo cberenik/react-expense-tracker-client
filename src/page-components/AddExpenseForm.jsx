@@ -22,6 +22,14 @@ export class AddExpenseForm extends React.Component {
         this.props.handleSubmit(this.state.description, this.state.amount, this.state.purchaseDate);
     };
 
+    handleClear = () => {
+        this.setState({
+            description: '',
+            amount: 0,
+            purchaseDate: new Date(),
+        });
+    };
+
     render() {
         // TODO: add tag input field
         return (
@@ -49,8 +57,11 @@ export class AddExpenseForm extends React.Component {
                         onChange={this.handleInputChanged}
                     />
                 </Form.Field>
-                <Button type="submit" onClick={this.handleSubmit}>
+                <Button type="submit" color="green" onClick={this.handleSubmit}>
                     Submit
+                </Button>
+                <Button color="red" basic onClick={this.handleClear}>
+                    Clear
                 </Button>
             </Form>
         );

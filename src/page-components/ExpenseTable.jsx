@@ -18,7 +18,7 @@ export function ExpenseTable(props) {
     });
     // TODO: allow editing of expenses
     return (
-        <Table celled>
+        <Table celled color="green">
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell> Description </Table.HeaderCell>
