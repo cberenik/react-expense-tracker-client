@@ -18,7 +18,7 @@ class InMemoryExpenseService {
     addExpense = (description, amount, purchaseDate) => {
         const highest = this.expenses.reduce((a, b) => (a.id > b.id ? a : b), 0);
         const nextId = highest.id + 1;
-        const newExpense = new Expense(nextId, description, amount, purchaseDate);
+        const newExpense = new Expense(nextId, description, parseInt(amount), purchaseDate);
         this.expenses = [...this.expenses.slice(), newExpense];
         return Promise.resolve(newExpense);
     };

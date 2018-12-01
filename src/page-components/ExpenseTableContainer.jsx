@@ -48,6 +48,7 @@ export class ExpenseTableContainer extends React.Component {
     };
 
     render() {
+        // TODO: Move add expense form, likely to a modal
         return (
             <React.Fragment>
                 <ExpenseTable expenses={this.state.expenses} handleDeleteExpense={this.handleDeleteExpense} />

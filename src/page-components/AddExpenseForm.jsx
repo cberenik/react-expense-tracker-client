@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Input, Form } from 'semantic-ui-react';
 
 export class AddExpenseForm extends React.Component {
     constructor(props) {
@@ -23,11 +23,12 @@ export class AddExpenseForm extends React.Component {
     };
 
     render() {
+        // TODO: add tag input field
         return (
             <Form>
                 <Form.Field>
                     <label>Description</label>
-                    <input
+                    <Input
                         type="text"
                         name="description"
                         value={this.state.description}
@@ -37,11 +38,11 @@ export class AddExpenseForm extends React.Component {
                 </Form.Field>
                 <Form.Field>
                     <label>Amount</label>
-                    <input type="number" name="amount" value={this.state.amount} onChange={this.handleInputChanged} />
+                    <Input type="number" name="amount" value={this.state.amount} onChange={this.handleInputChanged} />
                 </Form.Field>
                 <Form.Field>
                     <label>Purchase Date</label>
-                    <input
+                    <Input
                         type="date"
                         name="purchaseDate"
                         value={this.state.purchaseDate}

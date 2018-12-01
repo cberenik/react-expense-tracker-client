@@ -12,5 +12,6 @@ export class Expense {
         this.description = description;
         this.amount = amount;
         this.purchaseDate = moment(purchaseDate);
+        // TODO: add tag field
     }
 }

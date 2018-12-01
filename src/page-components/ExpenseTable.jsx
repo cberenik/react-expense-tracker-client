@@ -16,6 +16,7 @@ export function ExpenseTable(props) {
             </Table.Row>
         );
     });
+    // TODO: allow editing of expenses
     return (
         <Table celled>
             <Table.Header>
