@@ -1,5 +1,6 @@
+import React from 'react';
 import AWN from 'awesome-notifications';
-import styles from 'awesome-notifications/dist/style.css'
+import styles from 'awesome-notifications/dist/style.css';
 
 class ConsoleNotificationService {
     info(message) {
@@ -21,9 +22,9 @@ class AwesomeNotificationService {
     constructor() {
         this.notifier = new AWN({
             icons: {
-                enabled: false
+                enabled: false,
             },
-            duration: 3000
+            duration: 3000,
         });
     }
 
@@ -41,3 +42,9 @@ class AwesomeNotificationService {
 }
 
 export const awesomeNotificationService = new AwesomeNotificationService();
+
+export function provideAwesomeNotificationService(Component) {
+    return function(props) {
+        return <Component {...props} notificationService={awesomeNotificationService} />;
+    };
+}

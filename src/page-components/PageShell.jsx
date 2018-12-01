@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import dollarSign from '../dollar-sign.png';
 
 import { ExpenseTableContainer } from './ExpenseTableContainer';
-import { provideInMemoryService } from '../providers/ExpenseServiceProvider.jsx';
-import { provideAwesomeNotificationService } from '../providers/NotificationServiceProvider.jsx';
+import { provideInMemoryService } from '../services/ExpenseService';
+import { provideAwesomeNotificationService } from '../services/NotificationService';
 
 const ProvidedExpenseTableContainer = provideAwesomeNotificationService(provideInMemoryService(ExpenseTableContainer));
 
